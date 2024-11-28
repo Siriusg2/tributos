@@ -63,20 +63,20 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: rootPaths.authRoot,
+        path: rootPaths.collectionsRoot,
         element: (
-          <AuthLayout>
+          <MainLayout>
             <Suspense fallback={<PageLoader />}>
               <Outlet />
             </Suspense>
-          </AuthLayout>
+          </MainLayout>
         ),
         children: [
           {
-            path: paths.login,
-            element: <Login />,
+            path: paths.collections,
+            element: <Sales />,
           },
-          {
+          /*  {
             path: paths.signup,
             element: <SignUp />,
           },
@@ -87,6 +87,86 @@ const routes: RouteObject[] = [
           {
             path: paths.forgotPassword,
             element: <ForgotPassword />,
+          }, */
+        ],
+      },
+      {
+        path: rootPaths.budgetRoot,
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            path: paths.budget,
+            element: <Sales />,
+          },
+        ],
+      },
+      {
+        path: rootPaths.rrhhRoot,
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            path: paths.rrhh,
+            element: <Sales />,
+          },
+        ],
+      },
+      {
+        path: rootPaths.treasuryRoot,
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            path: paths.treasury,
+            element: <Sales />,
+          },
+        ],
+      },
+      {
+        path: rootPaths.housingRoot,
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            path: paths.housing,
+            element: <Sales />,
+          },
+        ],
+      },
+      {
+        path: rootPaths.purchasesRoot,
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            path: paths.purchases,
+            element: <Sales />,
           },
         ],
       },
@@ -98,6 +178,6 @@ const routes: RouteObject[] = [
   },
 ];
 
-const router = createBrowserRouter(routes, { basename: '/elegent' });
+const router = createBrowserRouter(routes, { basename: '/' });
 
 export default router;

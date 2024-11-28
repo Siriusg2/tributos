@@ -51,14 +51,18 @@ const SaleInfo = ({ image, title, sales, increment, date }: SaleInfoProps): Reac
         </Typography>
         <Typography
           variant="body2"
-          color="primary.main"
+          color={increment < 0 ? 'error.main' : 'primary.main'}
           display="flex"
           alignItems="center"
           gap={1}
           whiteSpace={'nowrap'}
         >
-          <IconifyIcon icon="ph:trend-up-fill" width={16} height={16} />
-          {`+${increment}%`} last month
+          <IconifyIcon
+            icon={`ph:trend-${increment < 0 ? 'down' : 'up'}-fill`}
+            width={16}
+            height={16}
+          />
+          {`${Math.abs(increment)}%`} ultima mes
         </Typography>
       </CardContent>
     </Card>

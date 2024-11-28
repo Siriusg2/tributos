@@ -83,8 +83,8 @@ const Topbar = ({ handleDrawerToggle }: TopbarProps): ReactElement => {
           alignItems="center"
           flex={'1 1 auto'}
         >
-          <Typography variant="h5" component="h5">
-            {pathname === '/' ? 'Dashboard' : title}
+          <Typography variant="h5" component="h5" color={'primary.main'}>
+            {pathname === '/' ? 'Inicio' : title}
           </Typography>
           {/*  <TextField
             variant="outlined"

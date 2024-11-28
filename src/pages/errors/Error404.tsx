@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { Link as Nav } from 'react-router-dom';
-import logo from 'assets/logo/elegant-logo.png';
-import error404 from 'assets/404/404.jpg';
+import logo from 'assets/logo/logo_muni.png';
+import error404 from 'assets/404/img_404.png';
 import Image from 'components/base/Image';
 
 const Error404 = (): ReactElement => {
@@ -17,7 +17,7 @@ const Error404 = (): ReactElement => {
         lineHeight: 0,
       }}
     >
-      <Image src={logo} width={82.6} />
+      <Image src={logo} width={200} />
     </Box>
   );
   return (
@@ -34,11 +34,11 @@ const Error404 = (): ReactElement => {
           py={12}
         >
           <Typography variant="h2" sx={{ mb: 3 }}>
-            Sorry, page not found!
+            Lo sentimos, página no encontrada
           </Typography>
           <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-            Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be
-            sure to check your spelling.
+            Lo sentimos, no podemos encontrar la página que buscas. Asegúrate de haber escrito bien
+            la URL.
           </Typography>
           <Image
             src={error404}
@@ -50,7 +50,7 @@ const Error404 = (): ReactElement => {
             }}
           />
           <Button component={Nav} to="/" size="large" variant="contained">
-            Back to Home
+            Volver a la página principal
           </Button>
         </Stack>
       </Container>

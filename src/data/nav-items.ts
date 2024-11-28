@@ -9,9 +9,9 @@ export interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    title: 'Recaudación',
+    title: 'Inicio',
     path: '/',
-    icon: 'hugeicons:taxes',
+    icon: 'material-symbols:dashboard-outline',
     active: true,
     collapsible: false,
     /*  sublist: [
@@ -30,8 +30,29 @@ const navItems: NavItem[] = [
     ], */
   },
   {
+    title: 'Recaudación',
+    path: '/recaudacion',
+    icon: 'hugeicons:taxes',
+    active: false,
+    collapsible: false,
+    /*  sublist: [
+      {
+        title: 'Dashboard',
+        path: '/',
+        active: false,
+        collapsible: false,
+      },
+      {
+        title: 'Sales',
+        path: '/',
+        active: false,
+        collapsible: false,
+      },
+    ], */
+  },
+  {
     title: 'Presupuesto',
-    path: '#!',
+    path: '/presupuesto',
     icon: 'eos-icons:project',
     active: false,
     collapsible: false,
@@ -120,7 +141,7 @@ const navItems: NavItem[] = [
   },
   {
     title: 'RRHH',
-    path: '#!',
+    path: '/rrhh',
     icon: 'vaadin:users',
     active: false,
     collapsible: false,
@@ -153,11 +174,11 @@ const navItems: NavItem[] = [
   },
   {
     title: 'Tesorería',
-    path: '#!',
+    path: '/tesoreria',
     icon: 'bi:cash-coin',
     active: false,
     collapsible: false,
-    sublist: [
+    /*  sublist: [
       {
         title: 'Products',
         path: '#!',
@@ -204,15 +225,15 @@ const navItems: NavItem[] = [
           },
         ],
       },
-    ],
+    ], */
   },
   {
     title: 'Viviendas',
-    path: 'authentication',
+    path: '/viviendas',
     icon: 'ion:home-sharp',
-    active: true,
+    active: false,
     collapsible: false,
-    sublist: [
+    /*  sublist: [
       {
         title: 'Sign In',
         path: 'login',
@@ -237,11 +258,11 @@ const navItems: NavItem[] = [
         active: true,
         collapsible: false,
       },
-    ],
+    ], */
   },
   {
     title: 'Compras',
-    path: '#!',
+    path: '/compras',
     icon: 'bxs:purchase-tag',
     active: false,
     collapsible: false,

@@ -25,7 +25,7 @@ export const saleInfoData: SaleInfoData[] = [
     image: customers,
     title: 'Customers',
     sales: 3200,
-    increment: 12,
+    increment: -12,
     date: 'May 2022',
   },
   {
