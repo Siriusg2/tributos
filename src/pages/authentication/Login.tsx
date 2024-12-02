@@ -11,14 +11,16 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import loginBanner from 'assets/authentication-banners/login.png';
+import loginBanner from 'assets/authentication-banners/ayuntamiento.jpg';
 import IconifyIcon from 'components/base/IconifyIcon';
-import logo from 'assets/logo/elegant-logo.png';
+import logo from 'assets/logo/logo_muni.png';
 import Image from 'components/base/Image';
-
+import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 const Login = (): ReactElement => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   return (
@@ -31,17 +33,19 @@ const Login = (): ReactElement => {
     >
       <Stack width={{ md: 0.5 }} m={2.5} gap={10}>
         <Link href="/" width="fit-content">
-          <Image src={logo} width={82.6} />
+          <Image src={logo} width={102.6} />
         </Link>
         <Stack alignItems="center" gap={2.5} width={330} mx="auto">
-          <Typography variant="h3">Login</Typography>
+          <Typography variant="h3">Inicio de sesión</Typography>
           <FormControl variant="standard" fullWidth>
             <InputLabel shrink htmlFor="email">
-              Email
+              Correo electrónico
             </InputLabel>
             <TextField
+              value={credentials.username}
+              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
               variant="filled"
-              placeholder="Enter your email"
+              placeholder="Ingrese su correo electrónico"
               id="email"
               InputProps={{
                 endAdornment: (
@@ -54,9 +58,11 @@ const Login = (): ReactElement => {
           </FormControl>
           <FormControl variant="standard" fullWidth>
             <InputLabel shrink htmlFor="password">
-              Password
+              Contraseña
             </InputLabel>
             <TextField
+              value={credentials.password}
+              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
               variant="filled"
               placeholder="********"
               type={showPassword ? 'text' : 'password'}
@@ -90,14 +96,35 @@ const Login = (): ReactElement => {
             }}
           >
             <Link href="/authentication/forgot-password" underline="hover">
-              Forget password
+              Olvide mi contrasena
             </Link>
           </Typography>
-          <Button variant="contained" fullWidth>
-            Log in
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={() => {
+              if (credentials.username !== 'admin' && credentials.password !== 'admin') {
+                toast.error('Credenciales incorrectas', {
+                  style: {
+                    backgroundColor: '#ff6464',
+                    color: 'white',
+                  },
+                });
+              } else {
+                toast.success(`Bienvenido ${credentials.username}`, {
+                  style: {
+                    backgroundColor: '#1fa677',
+                    color: 'white',
+                  },
+                });
+                navigate('/inicio');
+              }
+            }}
+          >
+            Iniciar sesion
           </Button>
-          <Typography variant="body2" color="text.secondary">
-            Don't have an account ?{' '}
+          {/*   <Typography variant="body2" color="text.secondary">
+            No tienes una cuenta ?{' '}
             <Link
               href="/authentication/sign-up"
               underline="hover"
@@ -105,7 +132,7 @@ const Login = (): ReactElement => {
             >
               Sign up
             </Link>
-          </Typography>
+          </Typography> */}
         </Stack>
       </Stack>
       <Suspense

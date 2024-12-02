@@ -10,7 +10,7 @@ export interface NavItem {
 const navItems: NavItem[] = [
   {
     title: 'Inicio',
-    path: '/',
+    path: '/inicio',
     icon: 'material-symbols:dashboard-outline',
     active: true,
     collapsible: false,

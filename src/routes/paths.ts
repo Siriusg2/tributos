@@ -1,5 +1,6 @@
 export const rootPaths = {
-  homeRoot: '',
+  login: '',
+  homeRoot: 'inicio',
   collectionsRoot: 'recaudacion',
   budgetRoot: 'presupuesto',
   rrhhRoot: 'rrhh',
@@ -10,6 +11,7 @@ export const rootPaths = {
 };
 
 export default {
+  login: `/${rootPaths.login}`,
   home: `/${rootPaths.homeRoot}`,
   collections: `/${rootPaths.collectionsRoot}`,
   budget: `/${rootPaths.budgetRoot}`,

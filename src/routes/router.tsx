@@ -47,6 +47,22 @@ const routes: RouteObject[] = [
     ),
     children: [
       {
+        path: rootPaths.login,
+        element: (
+          <AuthLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </AuthLayout>
+        ),
+        children: [
+          {
+            path: paths.login,
+            element: <Login />,
+          },
+        ],
+      },
+      {
         path: rootPaths.homeRoot,
         element: (
           <MainLayout>

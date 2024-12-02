@@ -1,5 +1,13 @@
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'sonner';
+const App = () => {
+  return (
+    <>
+      <Toaster />
 
-const App = () => <Outlet />;
+      <Outlet />
+    </>
+  );
+};
 
 export default App;
