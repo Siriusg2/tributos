@@ -1,0 +1,22 @@
+services:
+  client:
+    container_name: tributos
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./vite.config.ts:/app/vite.config.ts
+    ports:
+      - '3002:3002'
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge
+    external: true

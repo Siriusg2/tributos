@@ -2,6 +2,7 @@ import { MouseEventHandler, ReactElement } from 'react';
 import {
   AppBar,
   Badge,
+  Button,
   IconButton,
   InputAdornment,
   Link,
@@ -86,6 +87,7 @@ const Topbar = ({ handleDrawerToggle }: TopbarProps): ReactElement => {
           <Typography variant="h5" component="h5" color={'primary.main'}>
             {pathname === '/' ? 'Inicio' : title}
           </Typography>
+
           {/*  <TextField
             variant="outlined"
             placeholder="Search..."

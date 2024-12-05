@@ -2,16 +2,16 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Stack } from '@mui/material';
 import { ReactElement } from 'react';
 
-import TopSellingProduct from 'components/sections/dashboard/Home/Sales/TopSellingProduct/TopSellingProduct';
-import WebsiteVisitors from 'components/sections/dashboard/Home/Sales/WebsiteVisitors/WebsiteVisitors';
-import SaleInfoCards from 'components/sections/dashboard/Home/Sales/SaleInfoSection/SaleInfoCards';
-import BuyersProfile from 'components/sections/dashboard/Home/Sales/BuyersProfile/BuyersProfile';
-import NewCustomers from 'components/sections/dashboard/Home/Sales/NewCustomers/NewCustomers';
-import Revenue from 'components/sections/dashboard/Home/Sales/Revenue/Revenue';
+import TopSellingProduct from 'components/sections/dashboard/Sales/TopSellingProduct/TopSellingProduct';
+import WebsiteVisitors from 'components/sections/dashboard/Sales/WebsiteVisitors/WebsiteVisitors';
+import SaleInfoCards from 'components/sections/dashboard/Sales/SaleInfoSection/SaleInfoCards';
+import BuyersProfile from 'components/sections/dashboard/Sales/BuyersProfile/BuyersProfile';
+import NewCustomers from 'components/sections/dashboard/Sales/NewCustomers/NewCustomers';
+import Revenue from 'components/sections/dashboard/Sales/Revenue/Revenue';
 
 import { drawerWidth } from 'layouts/main-layout';
 
-const Sales = (): ReactElement => {
+const Collections = (): ReactElement => {
   return (
     <Grid
       container
@@ -54,4 +54,4 @@ const Sales = (): ReactElement => {
   );
 };
 
-export default Sales;
+export default Collections;

@@ -7,12 +7,12 @@ import { currencyFormat } from 'helpers/format-functions';
 type SaleInfoProps = {
   image?: string;
   title: string;
-  sales: number;
+  amount: number;
   increment: number;
   date?: string;
 };
 
-const SaleInfo = ({ image, title, sales, increment, date }: SaleInfoProps): ReactElement => {
+const SaleInfo = ({ image, title, amount, increment, date }: SaleInfoProps): ReactElement => {
   return (
     <Card
       sx={(theme) => ({
@@ -46,13 +46,28 @@ const SaleInfo = ({ image, title, sales, increment, date }: SaleInfoProps): Reac
             {date}
           </Typography>
         </Stack>
-        <Typography variant="body1" component="p" color="text.secondary">
-          {currencyFormat(sales)}
+        <Typography
+          display={increment === 0 ? 'none' : 'flex'}
+          variant="body1"
+          component="p"
+          color="text.secondary"
+        >
+          {currencyFormat(amount)}
         </Typography>
+        {
+          <Typography
+            display={amount < 5000 ? 'flex' : 'none'}
+            variant="body1"
+            component="p"
+            color="text.secondary"
+          >
+            {amount}
+          </Typography>
+        }
         <Typography
           variant="body2"
           color={increment < 0 ? 'error.main' : 'primary.main'}
-          display="flex"
+          display={increment === 0 ? 'none' : ' flex'}
           alignItems="center"
           gap={1}
           whiteSpace={'nowrap'}
@@ -62,7 +77,7 @@ const SaleInfo = ({ image, title, sales, increment, date }: SaleInfoProps): Reac
             width={16}
             height={16}
           />
-          {`${Math.abs(increment)}%`} ultima mes
+          {`${Math.abs(increment)}%`} ultimo mes
         </Typography>
       </CardContent>
     </Card>

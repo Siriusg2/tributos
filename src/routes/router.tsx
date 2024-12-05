@@ -25,18 +25,58 @@ const Error404 = lazy(async () => {
   return import('pages/errors/Error404');
 });
 
-const Sales = lazy(async () => {
+const Collections = lazy(async () => {
   return Promise.all([
-    import('pages/home/Sales'),
+    import('pages/collections/Collections'),
     new Promise((resolve) => setTimeout(resolve, 500)),
   ]).then(([moduleExports]) => moduleExports);
 });
 
+const Budgets = lazy(async () => {
+  return Promise.all([
+    import('pages/budgets/Budgets'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const Rrhh = lazy(async () => {
+  return Promise.all([
+    import('pages/rrhh/Rrhh'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const Treasury = lazy(async () => {
+  return Promise.all([
+    import('pages/treasury/Treasury'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const Housing = lazy(async () => {
+  return Promise.all([
+    import('pages/housing/Housing'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+
+const Purchases = lazy(async () => {
+  return Promise.all([
+    import('pages/purchases/Purchases'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
+const Home = lazy(async () => {
+  return Promise.all([
+    import('pages/home/Home'),
+    new Promise((resolve) => setTimeout(resolve, 500)),
+  ]).then(([moduleExports]) => moduleExports);
+});
 const Login = lazy(async () => import('pages/authentication/Login'));
-const SignUp = lazy(async () => import('pages/authentication/SignUp'));
+/* const SignUp = lazy(async () => import('pages/authentication/SignUp'));
 
 const ResetPassword = lazy(async () => import('pages/authentication/ResetPassword'));
-const ForgotPassword = lazy(async () => import('pages/authentication/ForgotPassword'));
+const ForgotPassword = lazy(async () => import('pages/authentication/ForgotPassword')); */
 
 const routes: RouteObject[] = [
   {
@@ -74,7 +114,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.home,
-            element: <Sales />,
+            element: <Home />,
           },
         ],
       },
@@ -90,7 +130,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.collections,
-            element: <Sales />,
+            element: <Collections />,
           },
           /*  {
             path: paths.signup,
@@ -118,7 +158,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.budget,
-            element: <Sales />,
+            element: <Budgets />,
           },
         ],
       },
@@ -134,7 +174,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.rrhh,
-            element: <Sales />,
+            element: <Rrhh />,
           },
         ],
       },
@@ -150,7 +190,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.treasury,
-            element: <Sales />,
+            element: <Treasury />,
           },
         ],
       },
@@ -166,7 +206,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.housing,
-            element: <Sales />,
+            element: <Housing />,
           },
         ],
       },
@@ -182,7 +222,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: paths.purchases,
-            element: <Sales />,
+            element: <Purchases />,
           },
         ],
       },

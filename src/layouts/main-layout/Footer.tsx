@@ -9,17 +9,15 @@ const Footer = () => {
       mr={3.75}
       my={3.75}
     >
-      <Typography variant="subtitle2" fontFamily={'Poppins'} color="text.primary">
-        Made with <span style={{ color: 'red' }}>&#10084;</span> by{' '}
+      {/*  <Typography variant="subtitle2" fontFamily={'Poppins'} color="text.primary">
+        Blipconnection® 2024 todos los derechos reservados.
         <Link
           href="https://themewagon.com"
           target="_blank"
           rel="noopener"
           sx={{ color: 'text.primary', '&:hover': { color: 'primary.main' } }}
-        >
-          ThemeWagon
-        </Link>
-      </Typography>
+        ></Link>
+      </Typography> */}
     </Stack>
   );
 };

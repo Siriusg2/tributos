@@ -12,10 +12,12 @@ import {
 import IconifyIcon from 'components/base/IconifyIcon';
 import { MouseEvent, ReactElement, useState } from 'react';
 import profile from 'assets/profile/user_icon.png';
+import { useNavigate } from 'react-router-dom';
 
 const AccountDropdown = (): ReactElement => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -127,6 +129,7 @@ const AccountDropdown = (): ReactElement => {
             <IconifyIcon icon="ri:logout-circle-line" color="error.main" />
           </ListItemIcon>
           <ListItemText
+            onClick={() => navigate('/')}
             sx={(theme) => ({
               '& .MuiListItemText-primary': {
                 fontSize: theme.typography.body1.fontSize,
