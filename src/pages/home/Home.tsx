@@ -10,6 +10,7 @@ import PurchasesCards from 'components/sections/dashboard/Home/PurchasesCards';
 import BudgetsChartCard from 'components/sections/dashboard/Home/BudgetsChartCard';
 import EmployeesProfile from 'components/sections/dashboard/Home/EmployeesProfile';
 import HousingChartCard from 'components/sections/dashboard/Home/HousingChartCard';
+import PurchasesChartCard from 'components/sections/dashboard/Home/PurchaseChartCard';
 
 const Home = (): ReactElement => {
   return (
@@ -45,7 +46,7 @@ const Home = (): ReactElement => {
       </Grid>
       <Grid xs={12} display={{ xs: 'flex', lg: 'flex', sm: 'flex', md: 'flex' }} gap={5}>
         <HousingChartCard />
-        <PurchasesCards />
+        <PurchasesChartCard />
       </Grid>
     </Grid>
   );

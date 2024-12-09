@@ -10,7 +10,7 @@ const PurchasesCards = () => {
           key={saleInfoDataItem.id}
           title={saleInfoDataItem.title}
           image={saleInfoDataItem.image}
-          sales={saleInfoDataItem.sales}
+          amount={saleInfoDataItem.amount}
           increment={saleInfoDataItem.increment}
           date={saleInfoDataItem.date}
         />
