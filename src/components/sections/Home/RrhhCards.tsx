@@ -1,7 +1,6 @@
 import { Stack } from '@mui/material';
 import { rrhhData } from 'data/home-data';
-import SaleInfo from '../Sales/SaleInfoSection/SaleInfo';
-
+import SaleInfo from '../dashboard/Sales/SaleInfoSection/SaleInfo';
 const RrhhCards = () => {
   return (
     <Stack direction={{ sm: 'row' }} justifyContent={{ sm: 'space-between' }} gap={3.75}>

@@ -6,49 +6,47 @@ import { LineSeriesOption } from 'echarts';
 import { useMemo } from 'react';
 import { EChartsOption } from 'echarts-for-react';
 
-type RevenueChartProps = {
+type TaxesChartProps = {
   chartRef: React.MutableRefObject<EChartsReactCore | null>;
   seriesData?: LineSeriesOption[];
-  legendData?: any;
+  maxValue?: number;
+  minValue?: number;
   colors?: string[];
   sx?: SxProps;
+  legendsData?: string[] | number[];
 };
 
-const RevenueChart = ({ chartRef, seriesData, legendData, colors, ...rest }: RevenueChartProps) => {
+const TaxesChart = ({
+  chartRef,
+  seriesData,
+  colors,
+  maxValue,
+  minValue,
+  legendsData,
+  ...rest
+}: TaxesChartProps) => {
   const theme = useTheme();
 
   const option: EChartsOption = useMemo(
     () => ({
       xAxis: {
         type: 'category',
-        data: [
-          'Enero',
-          'Febrero',
-          'Marzo',
-          'Abril',
-          'Mayo',
-          'Junio',
-          'Julio',
-          'Agosto',
-          'Septiembre',
-          'Octubre',
-          'Noviembre',
-          'Diciembre',
-        ],
+        data: legendsData, // Utiliza legendsData directamente
         boundaryGap: false,
+
         axisLine: {
           show: true,
           lineStyle: {
             color: theme.palette.divider,
-            width: 1,
+            width: 0.5,
             type: 'dashed',
           },
         },
         axisLabel: {
           show: true,
-          padding: 30,
+          padding: 3,
           color: theme.palette.text.secondary,
-          formatter: (value: any) => value.slice(0, 3),
+          formatter: (value: any) => value,
           fontFamily: theme.typography.body2.fontFamily,
         },
         axisTick: {
@@ -57,9 +55,9 @@ const RevenueChart = ({ chartRef, seriesData, legendData, colors, ...rest }: Rev
       },
       yAxis: {
         type: 'value',
-        max: 1000,
-        min: 0,
-        splitNumber: 4,
+        max: maxValue,
+        min: minValue,
+        splitNumber: 6,
         axisLine: {
           show: false,
         },
@@ -86,7 +84,7 @@ const RevenueChart = ({ chartRef, seriesData, legendData, colors, ...rest }: Rev
         bottom: 90,
       },
       legend: {
-        show: false,
+        show: true,
       },
       tooltip: {
         show: true,
@@ -95,10 +93,10 @@ const RevenueChart = ({ chartRef, seriesData, legendData, colors, ...rest }: Rev
       },
       series: seriesData,
     }),
-    [theme],
+    [theme, legendsData, seriesData, maxValue, minValue], // Incluye legendsData como dependencia
   );
 
   return <ReactEchart ref={chartRef} echarts={echarts} option={option} {...rest} />;
 };
 
-export default RevenueChart;
+export default TaxesChart;

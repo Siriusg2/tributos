@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import { treasuryData } from 'data/home-data';
-import SaleInfo from '../Sales/SaleInfoSection/SaleInfo';
+import SaleInfo from '../dashboard/Sales/SaleInfoSection/SaleInfo';
 
 const TreasuryCards = () => {
   return (
