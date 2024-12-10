@@ -2,14 +2,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Stack } from '@mui/material';
 import { ReactElement } from 'react';
 
-import TopSellingProduct from 'components/sections/dashboard/Sales/TopSellingProduct/TopSellingProduct';
-import WebsiteVisitors from 'components/sections/dashboard/Sales/WebsiteVisitors/WebsiteVisitors';
-import SaleInfoCards from 'components/sections/dashboard/Sales/SaleInfoSection/SaleInfoCards';
-import BuyersProfile from 'components/sections/dashboard/Sales/BuyersProfile/BuyersProfile';
-import NewCustomers from 'components/sections/dashboard/Sales/NewCustomers/NewCustomers';
-import Revenue from 'components/sections/dashboard/Sales/Revenue/Revenue';
-
 import { drawerWidth } from 'layouts/main-layout';
+import TaxesCard from 'components/sections/Collections/TaxesCard';
 
 const Collections = (): ReactElement => {
   return (
@@ -27,13 +21,13 @@ const Collections = (): ReactElement => {
         pl: { xs: 3.75, lg: 0 },
       }}
     >
-      <Grid xs={12}>
-        <SaleInfoCards />
+      {/*    <Grid xs={12}>
+          <SaleInfoCards />
+        </Grid> */}
+      <Grid xs={12} md={24}>
+        <TaxesCard />
       </Grid>
-      <Grid xs={12} md={8}>
-        <Revenue />
-      </Grid>
-      <Grid xs={12} md={4}>
+      {/*  <Grid xs={12} md={4}>
         <WebsiteVisitors />
       </Grid>
       <Grid xs={12} lg={8}>
@@ -49,7 +43,7 @@ const Collections = (): ReactElement => {
           <NewCustomers />
           <BuyersProfile />
         </Stack>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

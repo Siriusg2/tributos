@@ -13,6 +13,7 @@ import { drawerWidth } from 'layouts/main-layout';
 import RevenueTreasury from 'components/sections/dashboard/Sales/Revenue/RevenueTreasury';
 import RevenueTreasurygraph2 from 'components/sections/dashboard/Sales/Revenue/RevenueTreasuryGraph2';
 import RevenueTreasurygraph3 from 'components/sections/dashboard/Sales/Revenue/RevenueTreasuryGraph3';
+import RevenueTreasurygraph4 from 'components/sections/dashboard/Sales/Revenue/RevenueTrasuryGraph4';
 
 const Treasury = (): ReactElement => {
   return (
@@ -44,6 +45,9 @@ const Treasury = (): ReactElement => {
       </Grid>
       <Grid xs={12} md={8}>
         <RevenueTreasurygraph3 />
+      </Grid>
+      <Grid xs={12} md={8}>
+        <RevenueTreasurygraph4 />
       </Grid>
       <Grid xs={12} lg={4}>
         <Stack

@@ -3,6 +3,9 @@ import { ReactElement } from 'react';
 import { drawerWidth } from 'layouts/main-layout';
 import CollectionsCards from 'components/sections/Home/CollectionsCards';
 
+
+
+
 import RrhhCards from 'components/sections/Home/RrhhCards';
 import TreasuryCards from 'components/sections/Home/TreasuryCards';
 import HousingCards from 'components/sections/Home/HousingCards';
