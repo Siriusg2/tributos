@@ -23,6 +23,9 @@ importers:
       '@mui/x-data-grid-generator':
         specifier: ^7.2.0
         version: 7.22.3(ajoe3di4diazpo4kqaoliuhcfi)
+      '@types/lodash':
+        specifier: ^4.17.13
+        version: 4.17.13
       dayjs:
         specifier: ^1.11.10
         version: 1.11.13
@@ -32,6 +35,9 @@ importers:
       echarts-for-react:
         specifier: ^3.0.2
         version: 3.0.2(echarts@5.5.1)(react@18.3.1)
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       material-ui-popup-state:
         specifier: ^5.1.0
         version: 5.3.1(@mui/material@5.16.7(@emotion/react@11.13.5(@types/react@18.3.12)(react@18.3.1))(@emotion/styled@11.13.5(@emotion/react@11.13.5(@types/react@18.3.12)(react@18.3.1))(@types/react@18.3.12)(react@18.3.1))(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)

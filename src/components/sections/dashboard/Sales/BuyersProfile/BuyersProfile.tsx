@@ -17,18 +17,18 @@ import { PieDataItemOption } from 'echarts/types/src/chart/pie/PieSeries.js';
 const BuyersProfile = (): ReactElement => {
   const theme = useTheme();
   const seriesData: PieDataItemOption[] = [
-    { value: 50, name: 'Male' },
-    { value: 35, name: 'Female' },
-    { value: 15, name: 'Others' },
+    { value: 75, name: 'Prioridad' },
+
+    { value: 25, name: 'Normal' },
   ];
   const legendData = [
-    { name: 'Male', icon: 'circle' },
-    { name: 'Female', icon: 'circle' },
-    { name: 'Others', icon: 'circle' },
+    { name: 'Prioridad', icon: 'circle' },
+
+    { name: 'Normal', icon: 'circle' },
   ];
   const pieChartColors = [
     theme.palette.primary.main,
-    theme.palette.secondary.main,
+
     theme.palette.error.main,
   ];
 
@@ -36,9 +36,9 @@ const BuyersProfile = (): ReactElement => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [buyerGenderType, setBuyerGenderType] = useState<any>({
-    Male: false,
-    Female: false,
-    Others: false,
+    Prioridad: false,
+
+    Normal: false,
   });
 
   const toggleClicked = (name: string) => {
@@ -77,7 +77,7 @@ const BuyersProfile = (): ReactElement => {
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center" padding={2.5}>
         <Typography variant="subtitle1" color="text.primary">
-          Buyers Profile
+         Pedidos prioritarios
         </Typography>
         <IconButton
           id="buyers-profile-button"

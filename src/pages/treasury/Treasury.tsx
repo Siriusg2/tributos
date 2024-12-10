@@ -10,6 +10,9 @@ import NewCustomers from 'components/sections/dashboard/Sales/NewCustomers/NewCu
 import Revenue from 'components/sections/dashboard/Sales/Revenue/Revenue';
 
 import { drawerWidth } from 'layouts/main-layout';
+import RevenueTreasury from 'components/sections/dashboard/Sales/Revenue/RevenueTreasury';
+import RevenueTreasurygraph2 from 'components/sections/dashboard/Sales/Revenue/RevenueTreasuryGraph2';
+import RevenueTreasurygraph3 from 'components/sections/dashboard/Sales/Revenue/RevenueTreasuryGraph3';
 
 const Treasury = (): ReactElement => {
   return (
@@ -31,13 +34,16 @@ const Treasury = (): ReactElement => {
         <SaleInfoCards />
       </Grid>
       <Grid xs={12} md={8}>
-        <Revenue />
+        <RevenueTreasury />
       </Grid>
       <Grid xs={12} md={4}>
         <WebsiteVisitors />
       </Grid>
-      <Grid xs={12} lg={8}>
-        <TopSellingProduct />
+      <Grid xs={12} md={8}>
+        <RevenueTreasurygraph2 />
+      </Grid>
+      <Grid xs={12} md={8}>
+        <RevenueTreasurygraph3 />
       </Grid>
       <Grid xs={12} lg={4}>
         <Stack
@@ -46,7 +52,7 @@ const Treasury = (): ReactElement => {
           height={1}
           width={1}
         >
-          <NewCustomers />
+         
           <BuyersProfile />
         </Stack>
       </Grid>

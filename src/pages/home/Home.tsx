@@ -1,16 +1,16 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import { ReactElement } from 'react';
 import { drawerWidth } from 'layouts/main-layout';
-import CollectionsCards from 'components/sections/dashboard/Home/CollectionsCards';
+import CollectionsCards from 'components/sections/Home/CollectionsCards';
 
-import RrhhCards from 'components/sections/dashboard/Home/RrhhCards';
-import TreasuryCards from 'components/sections/dashboard/Home/TreasuryCards';
-import HousingCards from 'components/sections/dashboard/Home/HousingCards';
-import PurchasesCards from 'components/sections/dashboard/Home/PurchasesCards';
-import BudgetsChartCard from 'components/sections/dashboard/Home/BudgetsChartCard';
-import EmployeesProfile from 'components/sections/dashboard/Home/EmployeesProfile';
-import HousingChartCard from 'components/sections/dashboard/Home/HousingChartCard';
-import PurchasesChartCard from 'components/sections/dashboard/Home/PurchaseChartCard';
+import RrhhCards from 'components/sections/Home/RrhhCards';
+import TreasuryCards from 'components/sections/Home/TreasuryCards';
+import HousingCards from 'components/sections/Home/HousingCards';
+import PurchasesCards from 'components/sections/Home/PurchasesCards';
+import BudgetsChartCard from 'components/sections/Home/BudgetsChartCard';
+import EmployeesProfile from 'components/sections/Home/EmployeesProfile';
+import HousingChartCard from 'components/sections/Home/HousingChartCard';
+import PurchasesChartCard from 'components/sections/Home/PurchaseChartCard';
 
 const Home = (): ReactElement => {
   return (

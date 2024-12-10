@@ -1,88 +1,160 @@
 import { ChangeEvent, ReactElement, useMemo, useState } from 'react';
 import {
-  Avatar,
   Divider,
   InputAdornment,
-  LinearProgress,
-  Link,
   Stack,
   TextField,
-  Tooltip,
   Typography,
-  debounce,
+  Chip,
+  IconButton,
 } from '@mui/material';
-import { DataGrid, GridApi, GridColDef, GridSlots, useGridApiRef } from '@mui/x-data-grid';
+import { DataGrid, GridApi, GridColDef, useGridApiRef } from '@mui/x-data-grid';
 import IconifyIcon from 'components/base/IconifyIcon';
-import { DataRow, rows } from 'data/products';
-import CustomPagination from './CustomPagination';
-import { currencyFormat } from 'helpers/format-functions';
+import { debounce } from 'lodash';
 
-const columns: GridColDef<DataRow>[] = [
+// Hardcoded data for the new table
+const rows = [
   {
-    field: 'id',
-    headerName: 'ID',
+    id: 1,
+    product: 'Producto N°1',
+    status: 'Pedido Realizado',
+    dateExecuted: '2024-12-05',
+    dateRequested: '2024-12-01',
+    priority: true,
   },
+  {
+    id: 2,
+    product: 'Producto N°2',
+    status: 'Pedido Ejecutado',
+    dateExecuted: '2024-12-04',
+    dateRequested: '2024-12-02',
+    priority: false,
+  },
+  {
+    id: 3,
+    product: 'Producto N°3',
+    status: 'Pedido Realizado',
+    dateExecuted: '2024-12-06',
+    dateRequested: '2024-12-03',
+    priority: true,
+  },
+  {
+    id: 4,
+    product: 'Producto N°4',
+    status: 'Pedido Ejecutado',
+    dateExecuted: '2024-12-07',
+    dateRequested: '2024-12-04',
+    priority: true,
+  },
+  {
+    id: 5,
+    product: 'Producto N°5',
+    status: 'Pedido Realizado',
+    dateExecuted: '2024-12-08',
+    dateRequested: '2024-12-05',
+    priority: true,
+  },
+];
+
+// Function to calculate the difference in days between two dates
+const calculateDaysDifference = (dateExecuted: string, dateRequested: string): number => {
+  const executedDate = new Date(dateExecuted);
+  const requestedDate = new Date(dateRequested);
+  const timeDifference = executedDate.getTime() - requestedDate.getTime();
+  return Math.floor(timeDifference / (1000 * 3600 * 24)); // Convert milliseconds to days
+};
+
+// Columns configuration
+const columns: GridColDef[] = [
   {
     field: 'product',
-    headerName: 'Product',
+    headerName: 'Producto',
     flex: 1,
-    minWidth: 182.9625,
-    valueGetter: (params: any) => {
-      return params.title + ' ' + params.subtitle;
-    },
+    minWidth: 150,
+  },
+  {
+    field: 'status',
+    headerName: 'Estado',
+    flex: 1,
+    minWidth: 180,
     renderCell: (params: any) => {
+      const status = params.value;
+      const isRealizado = status === 'Pedido Realizado';
+
       return (
-        <Stack direction="row" spacing={1.5} alignItems="center" component={Link} href="#!">
-          <Tooltip title={params.row.product.title} placement="top" arrow>
-            <Avatar src={params.row.product.avatar} sx={{ objectFit: 'cover' }} />
-          </Tooltip>
-          <Stack direction="column" spacing={0.5} justifyContent="space-between">
-            <Typography variant="body1" color="text.primary">
-              {params.row.product.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {params.row.product.subtitle}
-            </Typography>
-          </Stack>
-        </Stack>
+        <Chip
+          label={status}
+          color={isRealizado ? 'error' : 'success'}
+          sx={{
+            backgroundColor: isRealizado ? 'rgb(245, 79, 95)' : 'rgb(31, 166, 119)',
+            color: 'white',
+            fontWeight: 'bold',
+          }}
+          size="small"
+        />
       );
     },
-    sortComparator: (v1: string, v2: string) => v1.localeCompare(v2),
   },
   {
-    field: 'orders',
-    headerName: 'Orders',
-    flex: 0.75,
-    minWidth: 137.221875,
+    field: 'dateRequested',
+    headerName: 'Realizado',
+    flex: 1,
+    minWidth: 180,
   },
   {
-    field: 'price',
-    headerName: 'Price',
-    flex: 0.75,
-    minWidth: 137.221875,
-    valueGetter: (params: any) => {
-      return currencyFormat(params);
+    field: 'dateExecuted',
+    headerName: 'Ejecutado',
+    flex: 1,
+    minWidth: 180,
+  },
+  {
+    field: 'demora',
+    headerName: 'Demora (días)',
+    flex: 1,
+    minWidth: 180,
+    renderCell: (params: any) => {
+      const { dateExecuted, dateRequested } = params.row;
+      const daysDifference = calculateDaysDifference(dateExecuted, dateRequested);
+      return (
+        <Typography variant="body2" sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          {daysDifference}
+        </Typography>
+      );
     },
   },
   {
-    field: 'adsSpent',
-    headerName: 'Ads Spent',
+    field: 'priority',
+    headerName: 'Prioridad',
     flex: 0.75,
-    minWidth: 137.221875,
-    valueGetter: (params: any) => {
-      return currencyFormat(params, { minimumFractionDigits: 3 });
+    minWidth: 120,
+    renderCell: (params: any) => {
+      const [isPriority, setIsPriority] = useState(params.value);
+
+      const handleClick = () => {
+        setIsPriority(!isPriority);
+      };
+
+      return (
+        <IconButton
+          color={isPriority ? 'primary' : 'default'}
+          size="small"
+          onClick={handleClick}
+          sx={{
+            backgroundColor: isPriority ? 'yellow' : 'transparent',
+            borderRadius: '50%',
+            padding: 0.5,
+            boxShadow: 'none', // Optional: To remove any outline shadow
+          }}
+        >
+          <IconifyIcon
+            icon={isPriority ? 'mdi:flash' : 'mdi:star-outline'}
+            width={20}
+            height={20}
+            sx={{ color: isPriority ? 'black' : 'inherit' }}
+          />
+        </IconButton>
+      );
     },
-  },
-  {
-    field: 'refunds',
-    headerName: 'Refunds',
-    flex: 0.75,
-    minWidth: 137.221875,
-    renderCell: ({ row: { refunds } }: any) => {
-      if (refunds > 0) return `> ${refunds}`;
-      else return `< ${-refunds}`;
-    },
-    filterable: false,
   },
 ];
 
@@ -90,28 +162,9 @@ const TopSellingProduct = (): ReactElement => {
   const apiRef = useGridApiRef<GridApi>();
   const [search, setSearch] = useState('');
 
-  const visibleColumns = useMemo(
-    () =>
-      columns
-        .filter((column) => column.field !== 'id')
-        .map((column) => {
-          if (column.field === 'refunds') {
-            return {
-              ...column,
-              getApplyQuickFilterFn: undefined,
-              filterable: false,
-            };
-          }
-          return column;
-        }),
-    [columns],
-  );
-
   const handleGridSearch = useMemo(() => {
-    return debounce((searchValue) => {
-      apiRef.current.setQuickFilterValues(
-        searchValue.split(' ').filter((word: any) => word !== ''),
-      );
+    return debounce((searchValue: string) => {
+      apiRef.current.setQuickFilterValues(searchValue.split(' ').filter((word) => word !== ''));
     }, 250);
   }, [apiRef]);
 
@@ -137,13 +190,11 @@ const TopSellingProduct = (): ReactElement => {
         gap={3.75}
       >
         <Typography variant="h5" color="text.primary">
-          Top Selling Product
+          Estado Demora en Ejecución
         </Typography>
         <TextField
           variant="filled"
-          placeholder="Search..."
-          id="search-input"
-          name="table-search-input"
+          placeholder="Buscar..."
           onChange={handleChange}
           value={search}
           InputProps={{
@@ -159,7 +210,7 @@ const TopSellingProduct = (): ReactElement => {
       <Stack height={1}>
         <DataGrid
           apiRef={apiRef}
-          columns={visibleColumns}
+          columns={columns}
           rows={rows}
           getRowHeight={() => 70}
           hideFooterSelectedRowCount
@@ -176,17 +227,6 @@ const TopSellingProduct = (): ReactElement => {
             },
           }}
           pageSizeOptions={[5]}
-          onResize={() => {
-            apiRef.current.autosizeColumns({
-              includeOutliers: true,
-              expand: true,
-            });
-          }}
-          slots={{
-            loadingOverlay: LinearProgress as GridSlots['loadingOverlay'],
-            pagination: CustomPagination,
-            noRowsOverlay: () => <section>No rows available</section>,
-          }}
           sx={{
             height: 1,
             width: 1,
@@ -196,5 +236,5 @@ const TopSellingProduct = (): ReactElement => {
     </Stack>
   );
 };
-
+  
 export default TopSellingProduct;

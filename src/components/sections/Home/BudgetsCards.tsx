@@ -1,11 +1,11 @@
 import { Stack } from '@mui/material';
-import { treasuryData } from 'data/home-data';
-import SaleInfo from '../Sales/SaleInfoSection/SaleInfo';
+import { budgetsData } from 'data/home-data';
+import SaleInfo from '../dashboard/Sales/SaleInfoSection/SaleInfo';
 
-const TreasuryCards = () => {
+const BudgetsCards = () => {
   return (
     <Stack direction={{ sm: 'row' }} justifyContent={{ sm: 'space-between' }} gap={3.75}>
-      {treasuryData.map((saleInfoDataItem) => (
+      {budgetsData.map((saleInfoDataItem) => (
         <SaleInfo
           key={saleInfoDataItem.id}
           title={saleInfoDataItem.title}
@@ -19,4 +19,4 @@ const TreasuryCards = () => {
   );
 };
 
-export default TreasuryCards;
+export default BudgetsCards;

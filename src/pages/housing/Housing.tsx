@@ -10,6 +10,7 @@ import NewCustomers from 'components/sections/dashboard/Sales/NewCustomers/NewCu
 import Revenue from 'components/sections/dashboard/Sales/Revenue/Revenue';
 
 import { drawerWidth } from 'layouts/main-layout';
+import HomeSellingProduct from 'components/sections/dashboard/Sales/TopSellingProduct/HomeSellingProduct';
 
 const Housing = (): ReactElement => {
   return (
@@ -27,9 +28,7 @@ const Housing = (): ReactElement => {
         pl: { xs: 3.75, lg: 0 },
       }}
     >
-      <Grid xs={12}>
-        <SaleInfoCards />
-      </Grid>
+    
       <Grid xs={12} md={8}>
         <Revenue />
       </Grid>
@@ -37,16 +36,15 @@ const Housing = (): ReactElement => {
         <WebsiteVisitors />
       </Grid>
       <Grid xs={12} lg={8}>
-        <TopSellingProduct />
+        <HomeSellingProduct />
       </Grid>
       <Grid xs={12} lg={4}>
         <Stack
           direction={{ xs: 'column', sm: 'row', lg: 'column' }}
           gap={3.75}
-          height={1}
-          width={1}
+         
         >
-          <NewCustomers />
+        
           <BuyersProfile />
         </Stack>
       </Grid>
